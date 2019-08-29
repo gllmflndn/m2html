@@ -24,17 +24,37 @@ hypertext documentation in which you can easily walk through, thanks
 to your web browser.
 
 INSTALLATION
-============
+------------
 
-Please read the [`INSTALL`](INSTALL) file for installation instructions.
+0. Requirements:
+  * MATLAB 5.3 or above
+  * Operating system: any.
+
+1. Download the most recent release from this website.
+
+2. Extract files in your MATLAB Repository `/home/foo/matlab/` :
+```
+unzip m2html.zip
+```
+3. Add the `m2html` directory in your MATLAB path:
+```matlab
+addpath /home/foo/matlab/m2html/
+```  
+4. Ready to use !
+```matlab
+help m2html
+```
+
+If you want to generate dependency graphs, you need to install [GraphViz](https://www.graphviz.org/),
+an open source graph visualization software.
 
 LICENSE
-=======
+-------
 
 Please read the [`LICENSE`](LICENSE) file for license details.
 
 TUTORIAL
-========
+--------
 
 * Online Tutorial: https://www.artefact.tk/software/matlab/m2html/tutorial.php
 * Frequently Asked Questions repository: https://www.artefact.tk/software/matlab/m2html/faq.php
@@ -86,7 +106,7 @@ help m2html
 ```
 
 CUSTOMIZATION
-=============
+-------------
 
 This toolbox uses the HTML Template class so that you can fully customize the
 output. You can modify `.tpl` files in `templates/blue/` or create new templates 
