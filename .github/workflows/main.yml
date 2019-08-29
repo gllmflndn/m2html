@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
     - name: Install GNU Octave and Graphviz
       run: |
         sudo apt-get install octave liboctave-dev graphviz
