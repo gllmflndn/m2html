@@ -16,7 +16,7 @@ function [token, remainder, quotient] = strtok2(string, delimiters)
 %   Copyright 1984-2002 The MathWorks, Inc. 
 %   $Revision: 5.14 $  $Date: 2002/04/09 00:33:38 $
 
-token = []; remainder = []; quotient = string;
+token = ''; remainder = ''; quotient = string;
 
 len = length(string);
 if len == 0
@@ -48,5 +48,5 @@ end
 if (nargout == 3 && start > 1)
 	quotient = string(1:start-1);
 else
-	quotient = [];
+	quotient = '';
 end
