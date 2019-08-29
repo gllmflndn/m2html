@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install GNU Octave and Graphviz
+      run: |
+        sudo apt-get install octave liboctave-dev graphviz
+        octave --version
+    - name: Install M2HTML in GNU Octave
+      run: octave --no-gui --no-window-system --silent --eval "addpath (pwd); savepath ();"
+    - name: Generate M2HTML documentation
+      run: octave --no-gui --no-window-system --silent --eval "cd ..; m2html('mfiles','m2html', 'htmldir','doc', 'recursive','on', 'global','on', 'graph','on')"
