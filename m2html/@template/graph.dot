@@ -1,0 +1,19 @@
+/* Created by mdot for Matlab */
+digraph m2html {
+  display -> char;
+  get -> char;
+  get -> get;
+  parse -> get;
+  parse -> set;
+  set -> get;
+  set -> set;
+  template -> set;
+  template -> template;
+
+  char [URL="char.html"];
+  display [URL="display.html"];
+  get [URL="get.html"];
+  parse [URL="parse.html"];
+  set [URL="set.html"];
+  template [URL="template.html"];
+}

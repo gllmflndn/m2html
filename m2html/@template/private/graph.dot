@@ -1,0 +1,8 @@
+/* Created by mdot for Matlab */
+digraph m2html {
+  subst -> loadtpl;
+
+  finish [URL="finish.html"];
+  loadtpl [URL="loadtpl.html"];
+  subst [URL="subst.html"];
+}
