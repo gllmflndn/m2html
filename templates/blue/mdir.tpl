@@ -6,7 +6,7 @@
   <meta name="keywords" content="{MDIR}">
   <meta name="description" content="Index for Directory {MDIR}">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="generator" content="m2html &copy; 2003-2019 Guillaume Flandin">
   <meta name="robots" content="index, follow">
   <link type="text/css" rel="stylesheet" href="{MASTERPATH}m2html.css">
 </head>
@@ -55,6 +55,6 @@
 <li>View the <a href="{LTODOLIST}">TODO list</a>.</li>
 </ul>
 <!-- END todolist -->
-<hr><address>Generated on {DATE} by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+<hr><address>Generated on {DATE} by <strong><a href="https://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003-2019</address>
 </body>
 </html>

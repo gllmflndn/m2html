@@ -6,7 +6,7 @@
   <meta name="keywords" content="search, engine, matlab, documentation">
   <meta name="description" content="Matlab documentation search engine with M2HTML">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="generator" content="m2html &copy; 2003-2019 Guillaume Flandin">
   <meta name="robots" content="index, follow">
   <link type="text/css" rel="stylesheet" href="{MASTERPATH}m2html.css">
 </head>
@@ -24,6 +24,6 @@ Search for <input class="search" type="text" name="query" value="<?php echo $que
 	main('{IDXFILE}');
 ?>
 
-<hr><address>Generated on {DATE} by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+<hr><address>Generated on {DATE} by <strong><a href="https://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003-2019</address>
 </body>
 </html>
