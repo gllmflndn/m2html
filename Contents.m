@@ -3,8 +3,6 @@
 % 
 % M2HTML main functions.
 %   m2html   - Documentation System for Matlab M-files in HTML.
-%   mdot     - Wrapper to GraphViz's <mdot> for dependency graphs.
-%   mwizard  - Graphical user interface for m2html.
 %   private  - Internal functions.
 %
 % Template toolbox.
@@ -16,7 +14,7 @@
 %   templates/brain  - Another frames-enabled template
 %
 % Others.
-%   Changelog, INSTALL, LICENSE, README, TODO.
+%   Changelog, LICENSE, README.md, TODO.
 
 %   Copyright (C) 2003-2005 Guillaume Flandin <Guillaume@artefact.tk>
 %   $Revision: 1.5 $Date: 2005/05/01 16:15:30 $
