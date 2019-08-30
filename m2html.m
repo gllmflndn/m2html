@@ -29,7 +29,7 @@ function m2html(varargin)
 %    o extension - Extension of generated HTML files [ '.html' ]
 %    o template - HTML template name to use [ {'blue'} | 'frame' | ... ]
 %    o search - Add a PHP search engine [ on | {off}] - beta version!
-%    o ignoredDir - List of directories to be ignored [ {'.svn' 'cvs'} ]
+%    o ignoredDir - List of directories to be ignored [ {'.svn','.git','.github','.hg'} ]
 %    o save - Save current state after M-files parsing in 'm2html.mat' 
 %        in directory htmlDir [ on | {off}]
 %    o load - Load a previously saved '.mat' M2HTML state to generate HTML 
@@ -46,8 +46,6 @@ function m2html(varargin)
 %    >> m2html('mfiles','mytoolbox', 'htmldir','doc', 'source','off');
 %    >> m2html('mfiles','matlab', 'htmldir','doc', 'global','on');
 %    >> m2html( ... , 'template','frame', 'index','menu');
-%
-%  See also MWIZARD, MDOT, TEMPLATE.
 
 %  Copyright (C) 2005 Guillaume Flandin <Guillaume@artefact.tk>
 %  $Revision: 1.5 $Date: 2005/05/01 16:15:30 $
@@ -130,7 +128,7 @@ options = struct('verbose', 1,...
 				 'extension', '.html',...
 				 'template', 'blue',...
                  'rootdir', pwd,...
-				 'ignoredDir', {{'.svn' '.cvs'}}, ...
+				 'ignoredDir', {{'.svn','.git','.github','.hg'}}, ...
                  'language', 'english');
 
 if nargin == 1 && isstruct(varargin{1})
@@ -1323,7 +1321,7 @@ function mfiles = getmfiles(mdirs, mfiles, recursive,ignoredDir)
 			end
 		else
 			fprintf('Warning: Unprocessed file %s.\n',mdirs{i});
-			if ~isempty(strmatch('/',mdirs{i})) | findstr(':',mdirs{i})
+			if ~isempty(strmatch('/',mdirs{i})) || findstr(':',mdirs{i})
 				fprintf('         Use relative paths in ''mfiles'' option\n');
 			end 
 		end
