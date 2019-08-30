@@ -105,9 +105,9 @@ function m2html(varargin)
 %     <http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=3498>
 %  9/ Matlab itself, The Mathworks Inc, with HELPWIN, DOC and PUBLISH (R14)
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Set up options and default parameters
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 t0 = clock; % for statistics
 msgInvalidPair = 'Bad value for argument: ''%s''';
 
@@ -174,7 +174,7 @@ for i=1:2:length(paramlist)
 			options.load = 0;
 		case 'htmldir'
 			if ischar(pvalue)
-				if isempty(pvalue),
+				if isempty(pvalue)
 					options.htmlDir = '.';
 				else
 					options.htmlDir = pvalue;
@@ -322,18 +322,18 @@ for i=1:2:length(paramlist)
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Get template files location
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 s = fileparts(which(mfilename));
 options.template = fullfile(s,'templates',options.template);
 if exist(options.template) ~= 7
 	error('[Template] Unknown template.');
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Get list of M-files
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 if ~options.load
 	if strcmp(options.mFiles,'.')
 		d = dir(pwd); d = {d([d.isdir]).name};
@@ -341,15 +341,15 @@ if ~options.load
 	end
 	mfiles = getmfiles(options.mFiles,{},options.recursive,options.ignoredDir);
 	if ~length(mfiles), fprintf('Nothing to be done.\n'); return; end
-	if options.verbose,
+	if options.verbose
 		fprintf('Found %d M-files.\n',length(mfiles));
 	end
 	mfiles = sort(mfiles); % sort list of M-files in dictionary order
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Get list of (unique) directories and (unique) names
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 if ~options.load
 	mdirs = {};
 	names = {};
@@ -359,7 +359,7 @@ if ~options.load
 	end
 
 	mdir = unique(mdirs);
-	if options.verbose,
+	if options.verbose
 		fprintf('Found %d unique Matlab directories.\n',length(mdir));
 	end
 
@@ -370,15 +370,15 @@ if ~options.load
 	%end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Create output directory, if necessary
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 if isempty(dir(options.htmlDir))										       
 	%- Create the top level output directory							       
 	if options.verbose  												       
 		fprintf('Creating directory %s...\n',options.htmlDir);  		       
 	end 																       
-	if options.htmlDir(end) == filesep, 								       
+	if options.htmlDir(end) == filesep								       
 		options.htmlDir(end) = [];  									       
 	end 																       
 	[pathdir, namedir] = fileparts(options.htmlDir);					       
@@ -390,16 +390,16 @@ if isempty(dir(options.htmlDir))
 	if ~status, error(msg); end 														       
 end 																	       
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Get synopsis, H1 line, script/function, subroutines, cross-references, todo
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 if ~options.load
 	synopsis   = cell(size(mfiles));
 	h1line     = cell(size(mfiles));
 	subroutine = cell(size(mfiles));
 	hrefs      = sparse(length(mfiles), length(mfiles));
 	todo       = struct('mfile',[], 'line',[], 'comment',{{}});
-	ismex      = zeros(length(mfiles), length(mexexts));
+	ismex      = zeros(length(mfiles), numel(mexexts));
 	statlist   = {};
 	statinfo   = sparse(1,length(mfiles));
 	kw         = cell(size(mfiles));
@@ -444,9 +444,9 @@ if ~options.load
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Save M-filenames and cross-references for further analysis
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 matfilesave = 'm2html.mat';
 
 if options.save
@@ -459,9 +459,9 @@ if options.save
 		'statlist', 'statinfo');
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Setup the output directories
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 for i=1:length(mdir)
 	if exist(fullfile(options.htmlDir,mdir{i})) ~= 7
 		ldir = splitpath(mdir{i});
@@ -485,9 +485,9 @@ for i=1:length(mdir)
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Write the master index file
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 tpl_master = 'master.tpl';
 tpl_master_identifier_nbyline = 4;
 php_search = 'search.php';
@@ -568,9 +568,9 @@ tpl = parse(tpl,'OUT','TPL_MASTER');
 fprintf(fid,'%s',get(tpl,'OUT'));
 fclose(fid);
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Copy template files (CSS, images, ...)
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 % Get list of files
 d = dir(options.template);
 d = {d(~[d.isdir]).name};
@@ -605,9 +605,9 @@ for i=1:length(d)
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Search engine (index file and PHP script)
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 tpl_search = 'search.tpl';
 idx_search = 'search.idx';
 
@@ -651,9 +651,9 @@ if options.search
 	fclose(fid);
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Create <helptoc.xml> needed to display hierarchical entries in Contents panel
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 % See http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_env/guiref16.html
 % and http://www.mathworks.com/support/solutions/data/1-18U6Q.html?solution=1-18U6Q
 
@@ -704,9 +704,9 @@ if options.helptocxml
 	fclose(fid);
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Write an index for each output directory
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 tpl_mdir = 'mdir.tpl';
 tpl_mdir_link = '<a href="%s">%s</a>';
 %dotbase defined earlier
@@ -810,9 +810,9 @@ for i=1:length(mdir)
 	fclose(fid);
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Write a TODO list file for each output directory, if necessary
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 tpl_todo = 'todo.tpl';
 
 if options.todo
@@ -865,9 +865,9 @@ if options.todo
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Create dependency graphs using GraphViz, if requested
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 tpl_graph = 'graph.tpl';
 % You may have to modify the following line with Matlab7 (R14) to specify
 % the full path to where GraphViz is installed
@@ -940,9 +940,9 @@ if options.graph
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Write an HTML file for each M-file
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- List of Matlab keywords (output from iskeyword)
 matlabKeywords = {'break', 'case', 'catch', 'continue', 'elseif', 'else', ...
 				  'end', 'for', 'function', 'global', 'if', 'otherwise', ...
@@ -1055,7 +1055,8 @@ for i=1:length(mdir)
 						%- Unknown mex file source
 				end
 			end
-			[exts, platform] = mexexts;
+			allexts = mexexts;
+            platform = {allexts.arch};
 			mexplatforms = sprintf('%s, ',platform{find(ismex(j,:))});
 			if ~isempty(mexplatforms)
 				tpl = set(tpl,'var','PLATFORMS', mexplatforms(1:end-2));
@@ -1089,7 +1090,7 @@ for i=1:length(mdir)
 						while 1
 							[t,r,q] = strtok2(r,sprintf(' \t\n\r.,;%%'));
 							tline = [tline q];
-							if isempty(t), break, end;
+							if isempty(t), break, end
 							ii = strcmpi(hrefnames,t);
 							if any(ii)
 								jj = find(ii);
@@ -1104,7 +1105,7 @@ for i=1:length(mdir)
 					end
 					descr = [descr tline(2:end)];
 				elseif isempty(tline)
-					if ~isempty(descr), break, end;
+					if ~isempty(descr), break, end
 				else
 					if flagsynopcont
 						if isempty(strmatch('...',fliplr(deblank(tline))))
@@ -1221,7 +1222,7 @@ for i=1:length(mdir)
 							while 1
 								[t,r,q] = strtok2(r,strtok_delim);
 								myline = [myline q];
-								if isempty(t), break, end;
+								if isempty(t), break, end
 								%- Highlight Matlab keywords &
 								%  cross-references on known functions
 								if options.syntaxHighlighting && ...
@@ -1230,7 +1231,7 @@ for i=1:length(mdir)
 										rr = fliplr(deblank(fliplr(r)));
 										icomma = strmatch(',',rr);
 										isemicolon = strmatch(';',rr);
-										if ~(isempty(rr) | ~isempty([icomma isemicolon]))
+										if ~(isempty(rr) || ~isempty([icomma isemicolon]))
 											myline = [myline t];
 										else
 											myline = [myline sprintf(tpl_mfile_keyword,t)];
@@ -1280,9 +1281,9 @@ for i=1:length(mdir)
 	end
 end
 
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 %- Display Statistics
-%-------------------------------------------------------------------------------
+%--------------------------------------------------------------------------
 if options.verbose
     prnbline = '';
     if options.source
@@ -1292,7 +1293,7 @@ if options.verbose
             length(mfiles), prnbline, length(mdir), round(etime(clock,t0)));
 end
 
-%===============================================================================
+%==========================================================================
 function mfiles = getmfiles(mdirs, mfiles, recursive,ignoredDir)
 	%- Extract M-files from a list of directories and/or M-files
 
@@ -1328,7 +1329,7 @@ function mfiles = getmfiles(mdirs, mfiles, recursive,ignoredDir)
 		end
 	end
 
-%===============================================================================
+%==========================================================================
 function calldot(dotexec, mdotfile, mapfile, pngfile, opt)
 	%- Draw a dependency graph in a PNG image using <dot> from GraphViz
 
@@ -1345,14 +1346,14 @@ function calldot(dotexec, mdotfile, mapfile, pngfile, opt)
         fprintf('<dot> failed.');
     end
     
-%===============================================================================
+%==========================================================================
 function s = backtomaster(mdir)
 	%- Provide filesystem path to go back to the root folder
 
 	ldir = splitpath(mdir);
 	s = repmat('../',1,length(ldir));
 	
-%===============================================================================
+%==========================================================================
 function ldir = splitpath(p)
 	%- Split a filesystem path into parts using filesep as separator
 
@@ -1369,7 +1370,7 @@ function ldir = splitpath(p)
 		ldir{1} = '.'; % should be removed
 	end
 
-%===============================================================================
+%==========================================================================
 function name = extractname(synopsis)
 	%- Extract function name in a synopsis
 
@@ -1387,20 +1388,20 @@ function name = extractname(synopsis)
 	end
 	if length(name) == 1, name = name{1}; end
 
-%===============================================================================
+%==========================================================================
 function f = fullurl(varargin)
 	%- Build full url from parts (using '/' and not filesep)
 	
 	f = strrep(fullfile(varargin{:}),'\','/');
 
-%===============================================================================
+%==========================================================================
 function str = escapeblank(str)
 	%- Escape white spaces using '\'
 	
 	str = deblank(fliplr(deblank(fliplr(str))));
 	%str = strrep(str,' ','\ ');
 
-%===============================================================================
+%==========================================================================
 function str = entity(str)
 	%- Escape HTML special characters
 	%- See http://www.w3.org/TR/html4/charset.html#h-5.3.2
@@ -1410,7 +1411,7 @@ function str = entity(str)
 	str = strrep(str,'>','&gt;');
 	str = strrep(str,'"','&quot;');
 	
-%===============================================================================
+%==========================================================================
 function str = horztab(str,n)
 	%- For browsers, the horizontal tab character is the smallest non-zero 
 	%- number of spaces necessary to line characters up along tab stops that are

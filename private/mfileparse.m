@@ -15,11 +15,9 @@ function s = mfileparse(mfile, mdirs, names, options)
 %
 %  See also M2HTML
 
-%  Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
-%  $Revision: 1.0 $Date: 2003/29/04 17:33:43 $
+% Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
 
-error(nargchk(3,4,nargin));
-if nargin == 3,
+if nargin == 3
 	options = struct('verbose',1, 'globalHypertextLinks',0, 'todo',0);
 end
 
@@ -122,7 +120,7 @@ while ischar(tline)
 				symbol = {};
 				while 1
 					[t,splitc{j}] = strtok(splitc{j},strtok_delim);
-					if isempty(t), break, end;
+					if isempty(t), break, end
 					symbol{end+1} = t;
 				end
 				if options.globalHypertextLinks
@@ -142,12 +140,16 @@ end
 
 fclose(fid);
 
-%- Look for Mex files
+%- Look for MEX files
 [pathstr,name] = fileparts(mfile);
 samename = dir(fullfile(pathstr,[name	'.*']));
 samename = {samename.name};
 ext = {};
 for i=1:length(samename)
 	[dummy, dummy, ext{i}] = fileparts(samename{i});
+    if numel(ext{i}) && ext{i}(1) == '.'
+        ext{i}(1) = [];
+    end
 end
-s.ismex = ismember(mexexts,ext);
+allexts = mexexts;
+s.ismex = ismember({allexts.ext},ext);
