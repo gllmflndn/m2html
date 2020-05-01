@@ -16,16 +16,16 @@ function str = finish(str,unknowns)
 error(nargchk(2,2,nargin));
 
 switch lower(unknowns)
-	case 'keep'
-		%- do nothing
-	case 'remove'
-		%%%%%%%%%%%%%%%%%%%%%%%% WIH REGEXP ONLY %%%%%%%%%%%%%%%%%%%%
-		% str = regexprep(str,'{[^ \t\r\n}]+}','');
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	case 'comment'
-		%%%%%%%%%%%%%%%%%%%%%%%% WIH REGEXP ONLY %%%%%%%%%%%%%%%%%%%%
-		% str = regexprep(str,'{[^ \t\r\n}]+}','<!-- Template variable undefined -->');
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	otherwise
-		error('[Template] Unknown action.');
+    case 'keep'
+        %- do nothing
+    case 'remove'
+        %%%%%%%%%%%%%%%%%%%%%%%% WIH REGEXP ONLY %%%%%%%%%%%%%%%%%%%%
+        % str = regexprep(str,'{[^ \t\r\n}]+}','');
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    case 'comment'
+        %%%%%%%%%%%%%%%%%%%%%%%% WIH REGEXP ONLY %%%%%%%%%%%%%%%%%%%%
+        % str = regexprep(str,'{[^ \t\r\n}]+}','<!-- Template variable undefined -->');
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    otherwise
+        error('[Template] Unknown action.');
 end

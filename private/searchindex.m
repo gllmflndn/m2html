@@ -27,18 +27,18 @@ s = {};
 
 %- Loop over lines
 while 1
-	tline = fgetl(fid);
-	if ~ischar(tline), break, end
-	
-	%- Extract keywords in each line
-	while 1
-		[w, tline] = strtok(tline,strtok_delim);
-		if isempty(w), break, end;
-		%- Check the length of the keyword
-		if length(w) > szmin
-			s{end+1} = w;
-		end
-	end
+    tline = fgetl(fid);
+    if ~ischar(tline), break, end
+    
+    %- Extract keywords in each line
+    while 1
+        [w, tline] = strtok(tline,strtok_delim);
+        if isempty(w), break, end;
+        %- Check the length of the keyword
+        if length(w) > szmin
+            s{end+1} = w;
+        end
+    end
 end
 
 %- Close the M-file
@@ -49,9 +49,9 @@ fclose(fid);
 
 %- Compute occurency frenquency if required
 if nargout == 2,
-	if ~isempty(s)
-		freq = histc(j,1:length(i));
-	else
-		freq = [];
-	end
+    if ~isempty(s)
+        freq = histc(j,1:length(i));
+    else
+        freq = [];
+    end
 end

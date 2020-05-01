@@ -10,5 +10,5 @@ tpl = loadtpl(tpl,handle);
 
 str = get(tpl,'var',handle);
 for i=1:length(tpl.varkeys)
-	str = strrep(str, strcat('{',tpl.varkeys{i},'}'), tpl.varvals{i});
+    str = strrep(str, strcat('{',tpl.varkeys{i},'}'), tpl.varvals{i});
 end

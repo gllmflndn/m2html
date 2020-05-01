@@ -9,12 +9,12 @@ function fid = openfile(filename,permission)
 
 [fid, errmsg] = fopen(filename,[permission 't']);
 if ~isempty(errmsg)
-	switch permission
-		case 'r'
-			error(sprintf('Cannot open %s in read mode.',filename));
-		case 'w'
-			error(sprintf('Cannot open %s in write mode.',filename));
-		otherwise
-			error(errmsg);
-	end
+    switch permission
+        case 'r'
+            error(sprintf('Cannot open %s in read mode.',filename));
+        case 'w'
+            error(sprintf('Cannot open %s in write mode.',filename));
+        otherwise
+            error(errmsg);
+    end
 end

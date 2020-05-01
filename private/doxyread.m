@@ -33,7 +33,7 @@ function [statlist, docinfo] = doxyread(filename)
 
 error(nargchk(0,1,nargin));
 if nargin == 0,
-	filename = 'search.idx';
+    filename = 'search.idx';
 end
 
 %- Open the search index file
@@ -51,32 +51,32 @@ idx = reshape(idx,256,256);
 i = find(idx);
 statlist = cell(0,2);	
 for j=1:length(i) 
-	fseek(fid, idx(i(j)), 'bof');	
-	statw    = readString(fid);
-	while ~isempty(statw)
-		statidx  = readInt(fid);
-		statlist{end+1,1} = statw; % word
-		statlist{end,2}   = statidx; % index
-		statw   = readString(fid);
-	end
+    fseek(fid, idx(i(j)), 'bof');	
+    statw    = readString(fid);
+    while ~isempty(statw)
+        statidx  = readInt(fid);
+        statlist{end+1,1} = statw; % word
+        statlist{end,2}   = statidx; % index
+        statw   = readString(fid);
+    end
 end
-	
+    
 %- Extract occurence frequency of each word and docs info (name and url)
 docinfo = cell(size(statlist,1),1);
 for k=1:size(statlist,1)
-	fseek(fid, statlist{k,2}, 'bof');
-	numdoc = readInt(fid);
-	docinfo{k} = cell(numdoc,4);
-	for m=1:numdoc
-		docinfo{k}{m,1} = readInt(fid); % idx
-		docinfo{k}{m,2} = readInt(fid); % freq
-	end
-	for m=1:numdoc
-		fseek(fid, docinfo{k}{m,1}, 'bof');
-		docinfo{k}{m,3} = readString(fid); % name
-		docinfo{k}{m,4} = readString(fid); % url
-	end
-	docinfo{k} = reshape({docinfo{k}{:,2:4}},numdoc,[]);
+    fseek(fid, statlist{k,2}, 'bof');
+    numdoc = readInt(fid);
+    docinfo{k} = cell(numdoc,4);
+    for m=1:numdoc
+        docinfo{k}{m,1} = readInt(fid); % idx
+        docinfo{k}{m,2} = readInt(fid); % freq
+    end
+    for m=1:numdoc
+        fseek(fid, docinfo{k}{m,1}, 'bof');
+        docinfo{k}{m,3} = readString(fid); % name
+        docinfo{k}{m,4} = readString(fid); % url
+    end
+    docinfo{k} = reshape({docinfo{k}{:,2:4}},numdoc,[]);
 end
 
 %- Close the search index file
@@ -88,14 +88,14 @@ statlist = {statlist{:,1}}';
 %===========================================================================
 function s = readString(fid)
 
-	s = '';
-	while 1
-		w = fread(fid,1,'uchar');
-		if w == 0, break; end
-		s(end+1) = char(w);
-	end
+    s = '';
+    while 1
+        w = fread(fid,1,'uchar');
+        if w == 0, break; end
+        s(end+1) = char(w);
+    end
 
 %===========================================================================
 function i = readInt(fid)
 
-	i = fread(fid,1,'uint32');
+    i = fread(fid,1,'uint32');

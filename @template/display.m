@@ -13,6 +13,6 @@ disp(' ');
 disp([inputname(1),' = ']);
 disp(' ');
 for i=1:prod(size(tpl))
-	disp([blanks(length(inputname(1))+3) char(tpl(i))]);
+    disp([blanks(length(inputname(1))+3) char(tpl(i))]);
 end
 disp(' ');

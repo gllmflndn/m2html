@@ -7,18 +7,18 @@ function tpl = loadtpl(tpl,handle)
 %  $Revision: 1.0 $Date: 2003/05/05 22:19:51 $
 
 if ~isempty(get(tpl,'var',handle))
-	return;
+    return;
 else
-	ind = find(ismember(tpl.handles,handle));
-	if isempty(ind)
-		error('[Template] No such template handle.');
-	else
-		filename = tpl.file{ind};
-		[fid, errmsg] = fopen(filename,'rt');
-		if ~isempty(errmsg)
-			error(sprintf('Cannot open template file %s.',filename));
-		end
-		tpl = set(tpl,'var',handle,fscanf(fid,'%c'));
-		fclose(fid);
-	end
+    ind = find(ismember(tpl.handles,handle));
+    if isempty(ind)
+        error('[Template] No such template handle.');
+    else
+        filename = tpl.file{ind};
+        [fid, errmsg] = fopen(filename,'rt');
+        if ~isempty(errmsg)
+            error(sprintf('Cannot open template file %s.',filename));
+        end
+        tpl = set(tpl,'var',handle,fscanf(fid,'%c'));
+        fclose(fid);
+    end
 end

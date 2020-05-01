@@ -31,7 +31,7 @@ function result = doxysearch(query,filename)
 
 error(nargchk(1,2,nargin));
 if nargin == 1,
-	filename = 'search.idx';
+    filename = 'search.idx';
 end
 
 %- Open the search index file
@@ -90,8 +90,8 @@ fclose(fid);
 %===========================================================================
 function res = searchAgain(fid, word,res)
 
-	i = computeIndex(word);
-	if i > 0
+    i = computeIndex(word);
+    if i > 0
         
         fseek(fid,i*4+4,'bof'); % 4 bytes per entry, skip header
         start = size(res,1);
@@ -101,18 +101,18 @@ function res = searchAgain(fid, word,res)
             
             fseek(fid,idx,'bof');
             statw = readString(fid);
-		    while ~isempty(statw)
-			    statidx  = readInt(fid);
+            while ~isempty(statw)
+                statidx  = readInt(fid);
                 if length(statw) >= length(word) & ...
                     strcmp(statw(1:length(word)),word)
-			        res{end+1,1} = statw;   % word
+                    res{end+1,1} = statw;   % word
                     res{end,2}   = word;    % match
-			        res{end,3}   = statidx; % index
+                    res{end,3}   = statidx; % index
                     res{end,4}   = (length(statw) == length(word)); % full
                     res{end,5}   = {};      % doc
                 end
-			    statw = readString(fid);
-        	end
+                statw = readString(fid);
+            end
         
             totalfreq = 0;
             for j=start+1:size(res,1)
@@ -120,19 +120,19 @@ function res = searchAgain(fid, word,res)
                 numdoc = readInt(fid);
                 docinfo = {};
                 for m=1:numdoc
-			        docinfo{m,1} = readInt(fid); % idx
-			        docinfo{m,2} = readInt(fid); % freq
+                    docinfo{m,1} = readInt(fid); % idx
+                    docinfo{m,2} = readInt(fid); % freq
                     docinfo{m,3} = 0;            % rank
                     totalfreq = totalfreq + docinfo{m,2};
                     if res{j,2}, 
                         totalfreq = totalfreq + docinfo{m,2};
                     end;
-		        end
-		        for m=1:numdoc
-			        fseek(fid, docinfo{m,1}, 'bof');
-			        docinfo{m,4} = readString(fid); % name
-			        docinfo{m,5} = readString(fid); % url
-		        end
+                end
+                for m=1:numdoc
+                    fseek(fid, docinfo{m,1}, 'bof');
+                    docinfo{m,4} = readString(fid); % name
+                    docinfo{m,5} = readString(fid); % url
+                end
                 res{j,5} = docinfo;
             end
         
@@ -144,13 +144,13 @@ function res = searchAgain(fid, word,res)
             
         end % if idx > 0
         
-	end % if i > 0
+    end % if i > 0
 
 %===========================================================================
 function docs = combineResults(result)
 
-	docs = {};
-	for i=1:size(result,1)
+    docs = {};
+    for i=1:size(result,1)
         for j=1:size(result{i,5},1)
             key = result{i,5}{j,5};
             rank = result{i,5}{j,3};
@@ -170,13 +170,13 @@ function docs = combineResults(result)
             docs{l,4}{n+1,2} = result{i,2}; % match
             docs{l,4}{n+1,3} = result{i,5}{j,2}; % freq
         end
-	end
+    end
 
 %===========================================================================
 function filtdocs = filterResults(docs,requiredWords,forbiddenWords)
 
-	filtdocs = {};
-	for i=1:size(docs,1)
+    filtdocs = {};
+    for i=1:size(docs,1)
         words = docs{i,4};
         c = 1;
         j = size(words,1);
@@ -208,7 +208,7 @@ function filtdocs = filterResults(docs,requiredWords,forbiddenWords)
             filtdocs{l,3} = docs{i,3};
             filtdocs{l,4} = docs{i,4};
         end;
-	end
+    end
 
 %===========================================================================
 function docs = normalizeResults(docs);
@@ -243,14 +243,14 @@ function i = computeIndex(word)
 %===========================================================================
 function s = readString(fid)
 
-	s = '';
-	while 1
-		w = fread(fid,1,'uchar');
-		if w == 0, break; end
-		s(end+1) = char(w);
-	end
+    s = '';
+    while 1
+        w = fread(fid,1,'uchar');
+        if w == 0, break; end
+        s(end+1) = char(w);
+    end
 
 %===========================================================================
 function i = readInt(fid)
 
-	i = fread(fid,1,'uint32');
+    i = fread(fid,1,'uint32');

@@ -50,16 +50,16 @@ writeInt(fid, idx);
 i = 1;
 idx2 = zeros(1,length(kw));
 while 1
-	s = kw{i}(1:2);
-	idx(double(s(2)+1), double(s(1)+1)) = ftell(fid);
-	while i <= length(kw) & strmatch(s, kw{i})
-		writeString(fid,kw{i});
-		idx2(i) = ftell(fid);
-		writeInt(fid,0);
-		i = i + 1;
-	end
-	fwrite(fid, 0, 'int8');
-	if i > length(kw), break; end
+    s = kw{i}(1:2);
+    idx(double(s(2)+1), double(s(1)+1)) = ftell(fid);
+    while i <= length(kw) & strmatch(s, kw{i})
+        writeString(fid,kw{i});
+        idx2(i) = ftell(fid);
+        writeInt(fid,0);
+        i = i + 1;
+    end
+    fwrite(fid, 0, 'int8');
+    if i > length(kw), break; end
 end
 
 %- Write extra padding bytes
@@ -75,42 +75,42 @@ pos2 = ftell(fid);
 fseek(fid,pos2,'bof');
 idx3 = zeros(1,length(kw));
 for i=1:length(kw)
-	idx3(i) = ftell(fid);
-	[ia, ib, v] = find(statinfo(i,:));
-	counter = length(ia); % counter
-	writeInt(fid,counter);
-	for j=1:counter
-		writeInt(fid,ib(j)); % index
-		writeInt(fid,v(j));  % freq
-	end
+    idx3(i) = ftell(fid);
+    [ia, ib, v] = find(statinfo(i,:));
+    counter = length(ia); % counter
+    writeInt(fid,counter);
+    for j=1:counter
+        writeInt(fid,ib(j)); % index
+        writeInt(fid,v(j));  % freq
+    end
 end
 pos3 = ftell(fid);
 
 %- Set correct handles to keywords
   for i=1:length(kw)
-  	fseek(fid,idx2(i),'bof');
-	writeInt(fid,idx3(i));
+      fseek(fid,idx2(i),'bof');
+    writeInt(fid,idx3(i));
   end
 
 % Write urls
 fseek(fid,pos3,'bof');
 idx4 = zeros(1,length(docinfo));
 for i=1:length(docinfo)
-	idx4(i) = ftell(fid);
-	writeString(fid, docinfo{i,1}); % name
-	writeString(fid, docinfo{i,2}); % url
+    idx4(i) = ftell(fid);
+    writeString(fid, docinfo{i,1}); % name
+    writeString(fid, docinfo{i,2}); % url
 end
 
 %- Set corrext handles to word statistics
 fseek(fid,pos2,'bof');
 for i=1:length(kw)
-	[ia, ib, v] = find(statinfo(i,:));
-	counter = length(ia);
-	fseek(fid,4,'cof'); % counter
-	for m=1:counter
-		writeInt(fid,idx4(ib(m)));% index
-		fseek(fid,4,'cof'); % freq
-	end
+    [ia, ib, v] = find(statinfo(i,:));
+    counter = length(ia);
+    fseek(fid,4,'cof'); % counter
+    for m=1:counter
+        writeInt(fid,idx4(ib(m)));% index
+        fseek(fid,4,'cof'); % freq
+    end
 end
 
 %- Close the search index file
@@ -119,10 +119,10 @@ fclose(fid);
 %===========================================================================
 function writeString(fid, s)
 
-	fwrite(fid,s,'uchar');
-	fwrite(fid,0,'int8');
+    fwrite(fid,s,'uchar');
+    fwrite(fid,0,'int8');
 
 %===========================================================================
 function writeInt(fid, i)
-	
-	fwrite(fid,i,'uint32');
+    
+    fwrite(fid,i,'uint32');

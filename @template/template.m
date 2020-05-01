@@ -25,23 +25,23 @@ function tpl = template(root,unknowns)
 error(nargchk(0,2,nargin));
 
 switch nargin
-	case 0
-		tpl = struct('root','.',...
-					 'file',{{}},...
-					 'handles',{{}},...
-					 'varkeys',{{}},...
-					 'varvals',{{}},...
-					 'unknowns','remove');
-		tpl = class(tpl,'template');
-	case 1
-		if isa(root,'template')
-			tpl = root;
-		else
-			tpl = template;
-			tpl = set(tpl,'root',root);
-		end
-	case 2
-		tpl = template;
-		tpl = set(tpl,'root',root);
-		tpl = set(tpl,'unknowns',unknowns);
+    case 0
+        tpl = struct('root','.',...
+                     'file',{{}},...
+                     'handles',{{}},...
+                     'varkeys',{{}},...
+                     'varvals',{{}},...
+                     'unknowns','remove');
+        tpl = class(tpl,'template');
+    case 1
+        if isa(root,'template')
+            tpl = root;
+        else
+            tpl = template;
+            tpl = set(tpl,'root',root);
+        end
+    case 2
+        tpl = template;
+        tpl = set(tpl,'root',root);
+        tpl = set(tpl,'unknowns',unknowns);
 end

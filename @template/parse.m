@@ -13,21 +13,21 @@ function [tpl, str] = parse(tpl,target,handle,append)
 
 error(nargchk(3,4,nargin));
 if nargin == 3
-	append = 0;
+    append = 0;
 end
 
 if iscellstr(handle)
-	for i=1:length(handle)
-		[tpl, str] = subst(tpl,handle{i});
-		tpl = set(tpl,'var',target,str);
-	end
+    for i=1:length(handle)
+        [tpl, str] = subst(tpl,handle{i});
+        tpl = set(tpl,'var',target,str);
+    end
 elseif ischar(handle)
-	[tpl, str] = subst(tpl,handle);
-	if append
-		tpl = set(tpl,'var',target,[get(tpl,'var',target) str]);
-	else
-		tpl = set(tpl,'var',target,str);
-	end
+    [tpl, str] = subst(tpl,handle);
+    if append
+        tpl = set(tpl,'var',target,[get(tpl,'var',target) str]);
+    else
+        tpl = set(tpl,'var',target,str);
+    end
 else
-	error('[Template] Badly formed handle.');
+    error('[Template] Badly formed handle.');
 end
