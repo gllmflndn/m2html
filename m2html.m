@@ -753,16 +753,22 @@ for i=1:length(mdir)
         end
     end
     
-    %- Display other Matlab-specific files (.mat,.mdl,.p)
+    %- Display other Matlab-specific files (.mat,.mlx,.mlapp,.p,...)
     tpl = set(tpl,'var','other','');
     tpl = set(tpl,'var','rows-other','');
     w = what(mdir{i}); w = w(1);
-    w = {w.mat{:} w.mdl{:} w.p{:}};
-    for j=1:length(w)
-        tpl = set(tpl,'var','OTHERFILE',w{j});
-        tpl = parse(tpl,'rows-other','row-other',1);
+    exts = {'mlapp','mlx','mat','mdl','slx','sfx','p'};
+    hasother = false;
+    for j=1:numel(exts)
+        if isfield(w,exts{j})
+            for k=1:numel(w.(exts{j}))
+                tpl = set(tpl,'var','OTHERFILE',w.(exts{j}){k});
+                tpl = parse(tpl,'rows-other','row-other',1);
+                hasother = true;
+            end
+        end
     end
-    if ~isempty(w)
+    if hasother
         tpl = parse(tpl,'other','othermatlab');
     end
     
