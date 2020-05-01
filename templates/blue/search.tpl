@@ -20,8 +20,8 @@ Search for <input class="search" type="text" name="query" value="<?php echo $que
 </form>
 
 <?php
-	include('doxysearch.php');
-	main('{IDXFILE}');
+  include('doxysearch.php');
+  main('{IDXFILE}');
 ?>
 
 <hr><address>Generated on {DATE} by <strong><a href="https://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003-2019</address>

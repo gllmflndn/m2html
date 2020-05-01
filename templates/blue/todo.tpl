@@ -18,10 +18,10 @@
 <!-- BEGIN filelist -->
 <h2>{MFILE}:</h2>
 <ul>
-	<!-- BEGIN row -->
-	<li><a href="{L_NBLINE}">line {NBLINE}: </a> {COMMENT}</li>
-	<!-- END row -->
-	</ul>
+  <!-- BEGIN row -->
+  <li><a href="{L_NBLINE}">line {NBLINE}: </a> {COMMENT}</li>
+  <!-- END row -->
+  </ul>
 <!-- END filelist -->
 <hr><address>Generated on {DATE} by <strong><a href="https://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003-2019</address>
 </body>

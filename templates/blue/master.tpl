@@ -21,13 +21,13 @@
 </ul>
 <h2>Matlab Files found in these Directories</h2>
 <table width="100%">
-	<!-- BEGIN idrow -->
-	<tr>
-		<!-- BEGIN idcolumn -->
-		<td><a href="{L_IDNAME}" title="{T_IDNAME}">{IDNAME}</a></td>
-		<!-- END idcolumn -->
-	</tr>
-	<!-- END idrow -->
+  <!-- BEGIN idrow -->
+  <tr>
+    <!-- BEGIN idcolumn -->
+    <td><a href="{L_IDNAME}" title="{T_IDNAME}">{IDNAME}</a></td>
+    <!-- END idcolumn -->
+  </tr>
+  <!-- END idrow -->
 </table>
 
 <!-- BEGIN search -->
