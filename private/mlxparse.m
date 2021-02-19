@@ -1,5 +1,6 @@
-function [mlx, rels] = mlxparser(filename)
+function [mlx, rels, out] = mlxparse(filename)
 % Parse Live Script (*.mlx) files
+% FORMAT [mlx, rels, out] = mlxparse(filename)
 %
 % https://www.mathworks.com/help/matlab/matlab_prog/live-script-file-format.html
 
@@ -123,6 +124,16 @@ if nargout > 1
     end
 end
 
+%-Parse outputs
+%==========================================================================
+out = struct;
+if nargout > 2
+    try
+        out = xml_parser(fullfile(tmpdir,'matlab','output.xml'));
+        % list of outputs: embeddedOutputs/outputArray/element*
+        % location of outputs: embeddedOutputs/regionArray/element*
+    end
+end
 
 %==========================================================================
 %-Get XML element attributes

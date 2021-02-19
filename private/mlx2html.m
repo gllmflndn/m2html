@@ -1,5 +1,6 @@
 function mlx2html(mlxfilename, htmlfilename)
 % Convert Live Script (*.mlx) file to HTML
+% FORMAT mlx2html(mlxfilename, htmlfilename)
 
 % Copyright (C) 2020 Guillaume Flandin <Guillaume@artefact.tk>
 
@@ -22,7 +23,7 @@ else
     title = mlxfilename;
 end
 
-%-Export MLX file as HTML.
+%-Export MLX file as HTML
 %--------------------------------------------------------------------------
 fid = fopen(htmlfilename,'wt');
 if fid == -1
@@ -87,7 +88,7 @@ for i=1:numel(mlx)
             fmt = ''; % do not display
     end
     align = mlx(i).properties.align;
-    if ~strcmp(align,'left')
+    if ~strcmp(align,'left') && ~isempty(align)
         fmt = ['<div style="text-align:' align ';">' fmt(1:end-2) '</div>\n'];
     end
     bookmark = mlx(i).properties.bookmark;
