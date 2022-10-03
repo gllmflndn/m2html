@@ -8,7 +8,7 @@ function [statlist, docinfo] = doxyread(filename)
 %
 %  See also DOXYSEARCH, DOXYWRITE
 
-%  Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2003 Guillaume Flandin
 %  $Revision: 1.0 $Date: 2003/05/10 17:41:21 $
 
 %  This program is free software; you can redistribute it and/or
@@ -24,10 +24,6 @@ function [statlist, docinfo] = doxyread(filename)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, write to the Free Software
 %  Foundation Inc, 59 Temple Pl. - Suite 330, Boston, MA 02111-1307, USA.
-
-%  Suggestions for improvement and fixes are always welcome, although no
-%  guarantee is made whether and when they will be implemented.
-%  Send requests to <Guillaume@artefact.tk>
 
 %  See <http://www.doxygen.org/> for more details.
 

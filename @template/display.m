@@ -6,7 +6,7 @@ function display(tpl)
 %  root element of template files, number of template files, number of 
 %  keywords defined and the way of handling unknowns tags.
 
-%  Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2003 Guillaume Flandin
 %  $Revision: 1.0 $Date: 2003/05/05 22:19:51 $
 
 disp(' ');

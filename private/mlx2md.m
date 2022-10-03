@@ -2,7 +2,7 @@ function mlx2md(mlxfilename, mdfilename)
 % Convert Live Script (*.mlx) file to Markdown
 % FORMAT mlx2md(mlxfilename, mdfilename)
 
-% Copyright (C) 2021 Guillaume Flandin <Guillaume@artefact.tk>
+% Copyright (C) 2021 Guillaume Flandin
 
 %-Input arguments
 %--------------------------------------------------------------------------

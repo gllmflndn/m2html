@@ -3,7 +3,7 @@ function tpl = loadtpl(tpl,handle)
 %  TPL = LOADTPL(TPL,HANDLE) read the template file associated with the
 %  handle HANDLE in the template TPL and store it in the variable HANDLE.
 
-%  Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2003 Guillaume Flandin
 %  $Revision: 1.0 $Date: 2003/05/05 22:19:51 $
 
 if ~isempty(get(tpl,'var',handle))

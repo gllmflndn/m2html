@@ -2,7 +2,7 @@ function mlx2html(mlxfilename, htmlfilename)
 % Convert Live Script (*.mlx) file to HTML
 % FORMAT mlx2html(mlxfilename, htmlfilename)
 
-% Copyright (C) 2020 Guillaume Flandin <Guillaume@artefact.tk>
+% Copyright (C) 2020 Guillaume Flandin
 
 %-Input arguments
 %--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ fprintf(fid,'  <title>%s</title>\n',title);
 fprintf(fid,'  <meta charset="utf-8">\n');
 fprintf(fid,'  <meta name="viewport" content="width=device-width, initial-scale=1">\n');
 fprintf(fid,'  <meta name="description" content="%s">\n',title);
-fprintf(fid,'  <meta name="generator" content="m2html &copy; 2003-2020 https://www.artefact.tk">\n');
+fprintf(fid,'  <meta name="generator" content="m2html &copy; 2003-2022 https://github.com/gllmflndn/m2html">\n');
 fprintf(fid,'  <style>\n');
 fprintf(fid,'    body {background-color: white;}\n');
 fprintf(fid,'    h1,h2,p,ol,ul,pre {color: black;}\n');

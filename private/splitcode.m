@@ -7,7 +7,7 @@ function splitc = splitcode(code)
 %
 %  See also M2HTML, HIGHLIGHT
 
-%  Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2003 Guillaume Flandin
 %  $Revision: 1.0 $Date: 2003/29/04 17:33:43 $
 
 %- Label quotes in {'transpose', 'beginstring', 'midstring', 'endstring'}

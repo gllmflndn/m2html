@@ -15,7 +15,7 @@ function s = mfileparse(mfile, mdirs, names, options)
 %
 %  See also M2HTML
 
-% Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+% Copyright (C) 2003 Guillaume Flandin
 
 if nargin == 3
     options = struct('verbose',1, 'globalHypertextLinks',0, 'todo',0);

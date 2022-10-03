@@ -37,7 +37,7 @@ function m2html(varargin)
 %    o verbose - Verbose mode [ {on} | off ]
 %
 %  For more information, please read the M2HTML tutorial and FAQ at:
-%    <http://www.artefact.tk/software/matlab/m2html/>
+%    <https://github.com/gllmflndn/m2html>
 %
 %  Examples:
 %    >> m2html('mfiles','matlab', 'htmldir','doc');
@@ -47,7 +47,7 @@ function m2html(varargin)
 %    >> m2html('mfiles','matlab', 'htmldir','doc', 'global','on');
 %    >> m2html( ... , 'template','frame', 'index','menu');
 
-%  Copyright (C) 2005 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2005 Guillaume Flandin
 %  $Revision: 1.5 $Date: 2005/05/01 16:15:30 $
 
 %  This program is free software; you can redistribute it and/or
@@ -66,7 +66,6 @@ function m2html(varargin)
 
 %  Suggestions for improvement and fixes are always welcome, although no
 %  guarantee is made whether and when they will be implemented.
-%  Send requests to <Guillaume@artefact.tk>
 
 %  For tips on how to write Matlab code, see:
 %     * MATLAB Programming Style Guidelines, by R. Johnson:
@@ -78,11 +77,9 @@ function m2html(varargin)
 %  This function uses the Template class so that you can fully customize 
 %  the output. You can modify .tpl files in templates/blue/ or create new
 %  templates in a new directory.
-%  See the template class documentation for more details.
-%  <http://www.artefact.tk/software/matlab/template/>
 
 %  Latest information on M2HTML is available on the web through:
-%  <http://www.artefact.tk/software/matlab/m2html/>
+%  <https://github.com/gllmflndn/m2html>
 
 %  Other Matlab to HTML converters available on the web:
 %  1/ mat2html.pl, J.C. Kantor, in Perl, 1995: 
@@ -93,15 +90,13 @@ function m2html(varargin)
 %     <http://www.pohlheim.com/perl_main.html#matlabdocu>
 %  4/ MatlabCodeColorizer, S. Faridani, in C#, 2005:
 %     <http://www.pitchup.com/matlabcolorizer/>
-%  5/ Highlight, G. Flandin, in Matlab, 2003:
-%     <http://www.artefact.tk/software/matlab/highlight/>
-%  6/ mdoc, P. Brinkmann, in Matlab, 2003:
+%  5/ mdoc, P. Brinkmann, in Matlab, 2003:
 %     <http://www.math.uiuc.edu/~brinkman/software/mdoc/>
-%  7/ Ocamaweb, Miriad Technologies, in Ocaml, 2002:
+%  6/ Ocamaweb, Miriad Technologies, in Ocaml, 2002:
 %     <http://ocamaweb.sourceforge.net/>
-%  8/ Matdoc, M. Kaminsky, in Perl, 2003:
+%  7/ Matdoc, M. Kaminsky, in Perl, 2003:
 %     <http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=3498>
-%  9/ Matlab itself, The Mathworks Inc, with HELPWIN, DOC and PUBLISH (R14)
+%  8/ Matlab itself, The Mathworks Inc, with HELPWIN, DOC and PUBLISH (R14)
 
 %--------------------------------------------------------------------------
 %- Set up options and default parameters
@@ -1340,8 +1335,7 @@ function calldot(dotexec, mdotfile, mapfile, pngfile, opt)
     if nargin == 4, opt = ''; end
     try
         %- See <http://www.graphviz.org/>
-        %  <dot> must be in your system path, see M2HTML FAQ:
-        %  <http://www.artefact.tk/software/matlab/m2html/faq.php>
+        %  <dot> must be in your system path
 
         system(['"' dotexec '" ' opt ' -Tcmap -Tpng "' mdotfile ...
               '" -o "' mapfile ... 

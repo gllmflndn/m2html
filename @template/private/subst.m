@@ -3,7 +3,7 @@ function [tpl, str] = subst(tpl,handle)
 %  STR = SUBST(TPL,HANDLE) substitute all the known fields of variable HANDLE
 %  in the template TPL.
 
-%  Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2003 Guillaume Flandin
 %  $Revision: 1.0 $Date: 2003/05/05 22:19:51 $
 
 tpl = loadtpl(tpl,handle);

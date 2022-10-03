@@ -44,6 +44,6 @@ Search for <input class="search" type="text" name="query" value="" size="20" acc
 <li>View the <a href="{LGRAPH}">Graph</a>.</li>
 </ul>
 <!-- END graph -->
-<hr><address>Generated on {DATE} by <strong><a href="https://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2003-2019</address>
+<hr><address>Generated on {DATE} by <strong><a href="https://github.com/gllmflndn/m2html">m2html</a></strong> &copy; 2003-2022</address>
 </body>
 </html>

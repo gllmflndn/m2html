@@ -55,6 +55,6 @@
 <li>View the <a href="{LTODOLIST}">TODO list</a>.</li>
 </ul>
 <!-- END todolist -->
-<hr><address>Generated on {DATE} by <strong><a href="https://www.artefact.tk/software/matlab/m2html/">m2html</a></strong> &copy; 2003-2019</address>
+<hr><address>Generated on {DATE} by <strong><a href="https://github.com/gllmflndn/m2html">m2html</a></strong> &copy; 2003-2022</address>
 </body>
 </html>

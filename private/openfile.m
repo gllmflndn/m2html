@@ -4,7 +4,7 @@ function fid = openfile(filename,permission)
 %  in PERMISSION mode ('r' or 'w') and return a file identifier FID.
 %  File is opened in text mode: no effect on Unix but useful on Windows.
 
-%  Copyright (C) 2004 Guillaume Flandin <Guillaume@artefact.tk>
+%  Copyright (C) 2004 Guillaume Flandin
 %  $Revision: 1.1 $Date: 2004/05/05 17:14:09 $
 
 [fid, errmsg] = fopen(filename,[permission 't']);

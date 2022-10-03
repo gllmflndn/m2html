@@ -60,9 +60,6 @@ Please read the [`LICENSE`](LICENSE) file for license details.
 
 TUTORIAL
 --------
-
-* Online Tutorial: https://www.artefact.tk/software/matlab/m2html/tutorial.php
-* Frequently Asked Questions repository: https://www.artefact.tk/software/matlab/m2html/faq.php
  
 One *important* thing to take care of is the MATLAB current directory: `m2html` 
 must be launched one directory above the directory your wanting to generate 
@@ -126,8 +123,5 @@ M2HTML will use your `.tpl` files (`master`, `mdir`, `mfile`, `graph`, `search` 
 `todo.tpl`) and will copy all the other files (CSS, images, ....) in the root
 directory of the HTML documentation.
  
-See the [template class documentation](https://www.artefact.tk/software/matlab/template/) for more details.
-
-https://www.artefact.tk/software/matlab/m2html/ 
-
-Copyright (C) 2003-2005 Guillaume Flandin <Guillaume@artefact.tk>
+ 
+Copyright (C) 2003-2005 Guillaume Flandin

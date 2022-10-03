@@ -7,7 +7,7 @@ function ext = mexexts
 %
 % See also MEX, MEXEXT
 
-% Copyright (C) 2003 Guillaume Flandin <Guillaume@artefact.tk>
+% Copyright (C) 2003 Guillaume Flandin
 
 
 ext = struct(...

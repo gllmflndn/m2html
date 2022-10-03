@@ -4,7 +4,7 @@ function [mlx, rels, out] = mlxparse(filename)
 %
 % https://www.mathworks.com/help/matlab/matlab_prog/live-script-file-format.html
 
-% Copyright (C) 2020 Guillaume Flandin <Guillaume@artefact.tk>
+% Copyright (C) 2020 Guillaume Flandin
 
 mlx = struct('properties',{},'content',{});
 
