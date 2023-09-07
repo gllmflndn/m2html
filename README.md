@@ -1,5 +1,4 @@
-M2HTML - Documentation System for MATLAB .m files in HTML
-=========================================================
+# M2HTML - Documentation System for MATLAB files in HTML
 
 This toolbox is intended to provide automatic generation of M-files 
 documentation in HTML. It reads each M-file in a set of directories
@@ -7,12 +6,12 @@ documentation in HTML. It reads each M-file in a set of directories
 synopsis, H1 line, help, function calls and called functions with 
 hypertext links, syntax highlighted source code with hypertext, ...
 
-> :warning: I wrote most of this toolbox between 2001 and 2005 (for MATLAB 5.3!)
-and haven't used it much myself since then. That said, it might still be worth
-bringing M2HTML to the 21st century: it probably requires a complete rewrite but
-there are many great features that could be added, taking advantage of the very
-different web development landscape than two decades ago... This means that
-**contributions via pull requests or feature requests via opening issues are very much welcome**!
+> [!WARNING]
+> This toolbox has been written between 2001 and 2005 (for MATLAB 5.3).
+> It probably requires a complete rewrite and there are many great features
+> that could be added, taking advantage of the very different web development
+> landscape than two decades ago. This means that **contributions via pull
+> requests or feature requests via opening issues are very much welcome**.
 
 Here is a summary of the features of the toolbox:
 * extraction of H1 lines and help of each function
@@ -30,8 +29,7 @@ someone else (a downloaded toolbox, ...) because you will obtain an
 hypertext documentation in which you can easily walk through, thanks
 to your web browser.
 
-INSTALLATION
-------------
+## INSTALLATION
 
 0. Requirements:
   * MATLAB 5.3 or above, or GNU Octave
@@ -53,13 +51,11 @@ help m2html
 If you want to generate dependency graphs, you need to install [GraphViz](https://www.graphviz.org/),
 an open source graph visualization software.
 
-LICENSE
--------
+## LICENSE
 
 Please read the [`LICENSE`](LICENSE) file for license details.
 
-TUTORIAL
---------
+## TUTORIAL
  
 One *important* thing to take care of is the MATLAB current directory: `m2html` 
 must be launched one directory above the directory your wanting to generate 
@@ -107,8 +103,7 @@ Other parameters can be tuned for your documentation, see the M2HTML help:
 help m2html
 ```
 
-CUSTOMIZATION
--------------
+## CUSTOMIZATION
 
 This toolbox uses the HTML Template class so that you can fully customize the
 output. You can modify `.tpl` files in `templates/blue/` or create new templates 
@@ -122,6 +117,4 @@ m2html( ... , 'template','othertpl');
 M2HTML will use your `.tpl` files (`master`, `mdir`, `mfile`, `graph`, `search` and 
 `todo.tpl`) and will copy all the other files (CSS, images, ....) in the root
 directory of the HTML documentation.
- 
- 
-Copyright (C) 2003-2005 Guillaume Flandin
+
